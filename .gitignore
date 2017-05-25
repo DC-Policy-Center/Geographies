@@ -1,3 +1,12 @@
+# Specific files
+2016_sales_20011.csv
+hidden_output.csv
+
+
+# Python files
+__pycache__
+
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
