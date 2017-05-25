@@ -23,15 +23,17 @@ import json
 import requests
 from shapely.geometry import shape, Point
 import csv
+import os
 
 def getWard(lon,lat,map_from):
 
     if map_from.lower() == 'local':
         #If loading geoJson from local file
         try:
-            wardGeoJson_filename = './/GeoJson//Ward_2012.geojson'
+            wardGeoJson_filename = '.'+ os.path.sep+'GeoJson'+ os.path.sep+'Ward_2012.geojson'
         except:
             wardGeoJson_filename = '.\\GeoJson\\Ward_2012.geojson'
+            print('failed')
         # load GeoJSON file containing sectors
         with open(wardGeoJson_filename) as f:
             geo_json_data = json.load(f)

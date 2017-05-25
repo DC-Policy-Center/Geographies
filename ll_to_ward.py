@@ -59,7 +59,8 @@ for i in range(len(data)):
     if i != 0:
         lat =  data[i][lat_index]
         lon =  data[i][lon_index]
-
+        if i%30 == 0:
+            print('still moving  '+str(i)+' out of: '+str(len(data)))
         ward_value = geographyFinder.getWard(lon,lat,'local')
 
         data[i].append(ward_value)
