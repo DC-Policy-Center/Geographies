@@ -1,7 +1,7 @@
 '''
 Dependencies:
     *Self built methods*
-    -NONE
+    -geographyFinder
     *Libraries*
     - json
     - requests
@@ -16,7 +16,7 @@ starting with DC Wards
 |www.DCPolicyCenter.org / DC-Policy-Center.github.io |
 |github:                                             |
 |       - M-Watson & MW-DC-Policy-Center             |
-|       - DART ADD YOUR GITHUB USERNAME              |
+|       - darthowell                                 |
 |----------------------------------------------------|
 '''
 import json
