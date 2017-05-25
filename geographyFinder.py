@@ -28,7 +28,10 @@ def getWard(lon,lat,map_from):
 
     if map_from.lower() == 'local':
         #If loading geoJson from local file
-        wardGeoJson_filename = '.\\GeoJson\\Ward_2012.geojson'
+        try:
+            wardGeoJson_filename = './/GeoJson//Ward_2012.geojson'
+        except:
+            wardGeoJson_filename = '.\\GeoJson\\Ward_2012.geojson'
         # load GeoJSON file containing sectors
         with open(wardGeoJson_filename) as f:
             geo_json_data = json.load(f)
