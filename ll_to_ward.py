@@ -22,6 +22,7 @@ starting with DC Wards
 import json
 import requests
 from shapely.geometry import shape, Point
+import geocoder
 import csv
 import geographyFinder
 
@@ -36,20 +37,29 @@ data[0].append('lat')
 data[0].append('lon')
 data[0].append('ward')
 
-
+full_address_index = data[0].index('Full Address')
 
 for i in range(len(data)):
     if i != 0:
-        data[i].append('Washington, DC')
+        address = data[i][full_address_index]
+        g = geocoder.google(address)
+        latlong = g.latlng
+        address_latitude = latlong[0]
+        address_longitude = latlong[1]
+        
+        data[i].append(address_latitude)
+        data[i].append(address_longitude)
+
+
+    if i%100 == 0:
+        print('still moving, finding Lat Long  '+str(i)+' out of: '+str(len(data)))
 
         ##### This is the LAT LONG LOOKUP WOULD GO
 
-
-
         #####
         #### FOR TESTING, ALL SHOULD BE IN 6th Ward.
-        data[i].append(38.885288)
-        data[i].append(-76.993688)
+        #### data[i].append(38.885288)
+        ####data[i].append(-76.993688)
 
 # Find the column number that lat/lon values are located
 lat_index = data[0].index('lat')
@@ -59,7 +69,7 @@ for i in range(len(data)):
     if i != 0:
         lat =  data[i][lat_index]
         lon =  data[i][lon_index]
-        if i%30 == 0:
+        if i%100 == 0:
             print('still moving  '+str(i)+' out of: '+str(len(data)))
         ward_value = geographyFinder.getWard(lon,lat,'local')
 
