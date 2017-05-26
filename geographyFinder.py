@@ -41,17 +41,20 @@ def getWard(lon,lat,map_from):
 # Call dc open data API for 2012 ward geoJson file
         geo_json_raw = requests.get('https://opendata.arcgis.com/datasets/0ef47379cbae44e88267c01eaec2ff6e_31.geojson')  #This should be the 2012 ward map from DC Open Gov
         geo_json_data = geo_json_raw.json()
+
+
         # construct point based on lon/lat returned by geocoder
     point = Point(lon, lat)
 
     # check each polygon to see if it contains the point
+
     for feature in geo_json_data['features']:
         polygon = shape(feature['geometry'])
-        if polygon.contains(point):
-            try:
-                ward_value = feature['properties']['WARD_ID']
-            except:
-                ward_value = '!!NOTFOUND!!'
+        try:
+            if polygon.contains(point):
+                    ward_value = feature['properties']['WARD_ID']
+        except:
+            ward_value = '!!NOTFOUND!!'
     return(ward_value)
 
 '''  *****************        APPENDICES   *************************
