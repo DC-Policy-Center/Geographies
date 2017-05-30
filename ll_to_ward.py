@@ -47,8 +47,8 @@ for i in range(len(data)):
             address_latitude = latlong[0]
             address_longitude = latlong[1]
         except:
-            address_latitude = 0
-            address_longitude = 0
+            address_latitude = 0.000000
+            address_longitude = 0.000000
             print('Address[  %s  ] lat long not found in row %s...'%(str(address),str(i)))
 
         data[i].append(address_latitude)
@@ -57,14 +57,9 @@ for i in range(len(data)):
 
         if i%100 == 0:
             print('still moving, finding Lat Long  '+str(i)+' out of: '+str(len(data)))
-            print('One of tha lat longs are:  lat( %s ) , lng( %s ) \n\n...'%(str(address_latitude),str(address_longitude)))
+            print('One of the lat longs are:  lat( %s ) , lng( %s ) \n\n...'%(str(address_latitude),str(address_longitude)))
 
-        ##### This is the LAT LONG LOOKUP WOULD GO
 
-        #####
-        #### FOR TESTING, ALL SHOULD BE IN 6th Ward.
-        #### data[i].append(38.885288)
-        ####data[i].append(-76.993688)
 # Write results to an output CSV file
 with open('hidden_output_lat_lng.csv','w',newline='') as csvfile:
     csvwriter = csv.writer(csvfile)
