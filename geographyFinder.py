@@ -16,7 +16,6 @@ starting with DC Wards
 |www.DCPolicyCenter.org / DC-Policy-Center.github.io |
 |github:                                             |
 |       - M-Watson & MW-DC-Policy-Center             |
-|       - DART ADD YOUR GITHUB USERNAME              |
 |----------------------------------------------------|
 '''
 import json
@@ -49,7 +48,7 @@ def getWard(lon,lat,map_from):
         except:
             ward_value = '!!NOTFOUND--EXCEPT!!'
     return(ward_value)
-    
+
 ### Possible other GET methods
 def getNeighborhood(lon,lat,map_from):
     return('NONE')
